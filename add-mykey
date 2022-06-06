@@ -1,1 +1,4 @@
+#! /bin/bash
+
+# Import my remote ssh key for ssh-agent.
 ssh root@fluidog.xyz cat .ssh/id_rsa | ssh-add /dev/stdin
