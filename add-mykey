@@ -1,0 +1,1 @@
+ssh root@fluidog.xyz cat .ssh/id_rsa | ssh-add /dev/stdin
