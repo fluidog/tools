@@ -1,0 +1,28 @@
+#! /bin/bash
+
+[ $# -ne 1 ] || [ ! -f $1 ] && echo "Usage: $0 <filelist>" && exit 1
+
+FILE_LIST=$(realpath $1)
+
+function create_si_filelist()
+{
+	read code_dir
+	[[ "$code_dir" =~ ^\#@.* ]] && [ -d "${code_dir#\#\@ }" ] &&
+		code_dir=${code_dir#\#\@ } ||
+		{ echo "File format error!"; return 1; }
+
+	sed -e '/^$/d' -e '/^#/d' | # 去除以 "#"" 开头的注释行和空行
+		sed -e "s,^,${code_dir}/," | # 转化为绝对路径
+		(while read path ; do
+			if [ "${path%\*\*}" != "${path}" ] ; then # 以 "**" 结尾表示递归子目录
+				find "${path%\*\*}" -type d ! -path "*\.git*"
+			else
+				echo "${path}"
+			fi
+		done )|
+		sed -e "s,^${code_dir}/,," # 去除路径前缀
+}
+
+create_si_filelist <$FILE_LIST >${FILE_LIST##*/}.txt
+
+

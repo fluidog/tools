@@ -1,0 +1,25 @@
+#@ /root/workspace/kernel/klinux4.19-zyj
+
+#arch/x86/**
+kernel/**
+init/**
+mm/**
+lib/**
+
+fs/
+fs/sysfs/**
+fs/kernfs/**
+fs/ramfs/**
+fs/proc/**
+
+security/
+security/kysec/**
+security/smzy_security/**
+security/kic/**
+net/
+net/core/**
+net/netlink/**
+
+include/linux/**
+include/uapi/**
+include/net/

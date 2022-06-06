@@ -1,0 +1,23 @@
+#@ /root/workspace/kernel/linux
+
+arch/x86/**
+kernel/**
+init/**
+mm/**
+lib/**
+
+fs/
+fs/sysfs/**
+fs/kernfs/**
+fs/ramfs/**
+fs/proc/**
+
+security/
+security/selinux/**
+net/
+net/core/**
+net/netlink/**
+
+include/linux/**
+include/uapi/**
+include/net/
